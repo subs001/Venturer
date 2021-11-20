@@ -35,7 +35,7 @@ public class ProjectileGun : MonoBehaviour
 
     public bool allowInvoke = true;
 
-    public CharacterController player;
+    // public CharacterController player;
 
     private void Start()
     {
@@ -115,7 +115,7 @@ public class ProjectileGun : MonoBehaviour
 
             //Add recoil force to player (should only be called once)
             playerRb.AddForce(-directionWithSpread.normalized * recoilForce, ForceMode.Impulse);
-            player.transform.Translate(playerRb.transform.position);
+            // player.transform.Translate(playerRb.transform.position);
 
         }
 
