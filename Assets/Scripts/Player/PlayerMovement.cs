@@ -18,10 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private float sensitivity = 50f;
     private float sensMultiplier = 1f;
 
-    public float energy, energyRegen;
-    public int health, regen;
-    int maxHealth;
-    bool fighting;
+    // public float energy, energyRegen;
+    // public int health, regen;
+    // int maxHealth;
+    // bool fighting;
     
 
     //Movement
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        maxHealth = health;
+        // maxHealth = health;
         baseSpeed = startBaseSpeed;
     }
     void Start()
