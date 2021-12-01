@@ -44,7 +44,9 @@ public class CustomBullet : MonoBehaviour
     private void Explode()
     {
         //Instantiate explosion
-        if (explosion != null) Instantiate(explosion, transform.position, Quaternion.identity);
+        if (explosion != null) {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+        }
 
         //Check for enemies 
         Collider[] enemies = Physics.OverlapSphere(transform.position, explosionRange, whatIsEnemies);
@@ -59,7 +61,6 @@ public class CustomBullet : MonoBehaviour
             if (enemies[i].GetComponent<Rigidbody>())
                 enemies[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRange);
         }
-
         //Add a little delay, just to make sure everything works fine
         Invoke("Delay", 0.05f);
     }
