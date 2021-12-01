@@ -13,7 +13,9 @@ public class Tutorial : MonoBehaviour
 
     int counter = 0;
     string[] tutorialText = { "Use WASD To Move Around", "Press SPACE To Jump",
-        "Hold SHIFT While Running to Crouch-Slide"}; 
+        "Hold SHIFT While Running to Crouch-Slide",
+        "Press SPACE While in the Air to Double Jump"};
+    int tutSize;
 
     // Variable to store inputs that have been entered
     bool[] flag = new bool[4];
@@ -25,12 +27,14 @@ public class Tutorial : MonoBehaviour
             flag[i] = false;
 
         StartCoroutine("EnableCanvas");
+        tutSize = tutorialText.Length;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (counter < 3 && isCanvasVisible)
+        if (counter < tutSize && isCanvasVisible)
         {       
             switch (counter)
             {
@@ -62,6 +66,29 @@ public class Tutorial : MonoBehaviour
                     {
                         displayText.text = tutorialText[counter];
                         if (Input.GetKey(KeyCode.LeftShift))
+                            counter++;
+                        break;
+                    }
+
+                case 3:
+                    {
+                        displayText.text = tutorialText[counter];
+                        int spacePressed = 0;
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            spacePressed++;
+                            float jumpTimeLeft = 1.5f;
+                            while(jumpTimeLeft > 0.15f)
+                            {
+                                jumpTimeLeft -= Time.deltaTime;
+                                if (Input.GetKeyDown(KeyCode.Space))
+                                {
+                                    spacePressed++;
+                                    break;
+                                }
+                            }
+                        }
+                        if (spacePressed == 2)
                             counter++;
                         break;
                     }
