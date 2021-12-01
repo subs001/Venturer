@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private static int currentLevel = 0; 
+    private static int currentLevel = 1; 
     private static int numoflevels = 2; /** assuming we have 2 levels **/
 
     private void Start()
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
     }
     public static void NewLevel(){
-        if (currentLevel < numoflevels) 
+        if (currentLevel <= numoflevels) 
         {
             currentLevel += 1;
             SceneManager.LoadScene(currentLevel);
@@ -46,13 +46,14 @@ public class GameManager : MonoBehaviour
     **/
     public static void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 
 
     public static void GameOver()
     {
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene("GameOver");
     }
 

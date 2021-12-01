@@ -9,6 +9,7 @@ TagManager:
   - World
   - Crystal
   - Checkpoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
