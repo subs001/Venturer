@@ -9,7 +9,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] Canvas tutorialCanvas;
     [SerializeField] CanvasGroup canvasGroup;
 
-    bool isCanvasVisible = false;
+    bool isCanvasVisible = true;
 
     int counter = 0;
     string[] tutorialText = { "Use WASD To Move Around", "Press SPACE To Jump",
@@ -70,6 +70,7 @@ public class Tutorial : MonoBehaviour
         else
         {
             displayText.text = "Tutorial Complete";
+            StartCoroutine("DisableCanvas");
         }
     }
 
@@ -80,9 +81,16 @@ public class Tutorial : MonoBehaviour
         isCanvasVisible = true;
     }
 
-    
+    IEnumerator DisableCanvas()
+    {
+        yield return new WaitForSeconds(5);
+        tutorialCanvas.gameObject.SetActive(false);
+        isCanvasVisible = false;
+    }
 
-    
 
-   
+
+
+
+
 }

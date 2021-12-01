@@ -11,7 +11,7 @@ Once the scene is reloaded, the lighting becomes dark. Need to change that
 
 public class PlayerMovementAdd : MonoBehaviour
 {
-    public float speed, maxspeed = 10f;
+    
     private Vector3 coordinates;
     private Rigidbody rb;
     private Vector3 spawnpos, newspawnpos;
@@ -30,16 +30,10 @@ public class PlayerMovementAdd : MonoBehaviour
     void Update()
     {
 
-        /** need not use the following code **/
-        coordinates = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-        if (rb.velocity.magnitude < maxspeed)
-        {
-            rb.AddForce(coordinates * speed);
-
-        }
+        
 
         /** the following code is for the respawning of the player to the start/last checkpoint position if it falls down **/
-        if (transform.position.y <-5)
+        if (transform.position.y <-60)
         {
             if (!fell) 
             {
@@ -90,6 +84,8 @@ public class PlayerMovementAdd : MonoBehaviour
         /** add particle effects if you want  **/
         //Instantiate(particles, transform.position, Quaternion.Euler(270,0,0));
         transform.position = new Vector3 (newspawnpos.x+0.5f,spawnpos.y,newspawnpos.z+0.5f);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         fell = false;
     }
 
@@ -101,9 +97,10 @@ public class PlayerMovementAdd : MonoBehaviour
     2. The player respawns to this point after dying
     3. Add Collider to the empty gameobject acting as checkpoint
     **/
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        newspawnpos = col.transform.position;
+        if(col.gameObject.tag == "Checkpoint")
+            newspawnpos = col.transform.position;
     }
 
 
@@ -120,7 +117,7 @@ public class PlayerMovementAdd : MonoBehaviour
     {
         //Debug.Log("Touched an object!!");
         /** May need to press the key E multiple times. I don't like how it doesn't work sometimes **/
-        if (obj.transform.tag == "crystal" && Input.GetKeyDown(KeyCode.E))
+        if (obj.transform.tag == "Crystal" && Input.GetKeyDown(KeyCode.E))
         {
                 GameManager.NewLevel();
         }

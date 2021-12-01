@@ -11,7 +11,12 @@ public class GameManager : MonoBehaviour
 {
     private static int currentLevel = 0; 
     private static int numoflevels = 2; /** assuming we have 2 levels **/
-    
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     public static void NewLevel(){
         if (currentLevel < numoflevels) 
         {
@@ -41,7 +46,7 @@ public class GameManager : MonoBehaviour
     **/
     public static void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
 
