@@ -242,8 +242,8 @@ MonoBehaviour:
   bounciness: 0
   useGravity: 1
   explosionDamage: 40
-  explosionRange: 100
-  explosionForce: 100
+  explosionRange: 250
+  explosionForce: 800
   maxCollisions: 0
   maxLifetime: 3
   explodeOnTouch: 1
