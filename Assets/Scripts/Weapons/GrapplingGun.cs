@@ -8,9 +8,12 @@ public class GrapplingGun : MonoBehaviour {
     public Transform gunTip, camera, player;
     private float maxDistance = 100f;
     private SpringJoint joint;
+    public Animator crossbow;
 
     void Awake() {
         lr = GetComponent<LineRenderer>();
+        crossbow.SetBool("Fire",false);
+        crossbow.SetBool("Holding",false);
     }
 
     void Update() {
@@ -33,6 +36,8 @@ public class GrapplingGun : MonoBehaviour {
     void StartGrapple() {
         RaycastHit hit;
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable)) {
+            crossbow.SetBool("Holding",false);
+            crossbow.SetBool("Fire", true);
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -51,6 +56,7 @@ public class GrapplingGun : MonoBehaviour {
 
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
+            
         }
     }
 
@@ -58,6 +64,8 @@ public class GrapplingGun : MonoBehaviour {
 
     /// Call whenever we want to stop a grapple
     void StopGrapple() {
+        crossbow.SetBool("Fire", false);
+        crossbow.SetBool("Holding", true);
         lr.positionCount = 0;
         Destroy(joint);
     }
@@ -75,6 +83,7 @@ public class GrapplingGun : MonoBehaviour {
     }
 
     public bool IsGrappling() {
+        crossbow.SetBool("Holding", true);
         return joint != null;
     }
 

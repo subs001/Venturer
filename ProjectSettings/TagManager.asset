@@ -10,6 +10,8 @@ TagManager:
   - Crystal
   - Checkpoint
   - Enemy
+  - grapplegun
+  - rocketlauncher
   layers:
   - Default
   - TransparentFX
