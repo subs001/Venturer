@@ -7201,6 +7201,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2879549493618232643}
+    - target: {fileID: 8357737689164548539, guid: 9455e7acce827964d89a0971c38b861b, type: 3}
+      propertyPath: projectileGun
+      value: 
+      objectReference: {fileID: 2879549493618232644}
     - target: {fileID: 8357737689164548540, guid: 9455e7acce827964d89a0971c38b861b, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -7630,6 +7634,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfa069a974e285547b6a742ec4b6e40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2879549493618232644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6093706084042917645, guid: d0d51262db9ebbe479926213354833d0, type: 3}
+  m_PrefabInstance: {fileID: 2879549493618232642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa82747e48d22c049b323897b02d3c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!33 &3220995515926150468
