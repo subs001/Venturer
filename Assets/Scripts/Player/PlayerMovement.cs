@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     //Rotation and look
     public bool lockLook;
     private float xRotation;
-    private float sensitivity = 50f;
+    public float sensitivity = 50f;
     private float sensMultiplier = 1f;
 
     // public float energy, energyRegen;
